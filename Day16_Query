@@ -1,0 +1,27 @@
+Query Question:-
+Your task is to interact with the admissions table to retrieve specific information. Your goal is to write a SQL query to show all columns for a patient with a patient_id of 542 based on their most recent admission_date.
+
+Schema
+Table Schema for admissions table
+
+patient_id
+admission_date
+discharge_date
+diagnosis
+attending_doctor_id
+Concepts Covered
+Basic SQL Query Structure (SELECT, WHERE)
+Aggregation Functions (MAX)
+Grouping (GROUP BY, HAVING)
+Good luck!
+
+
+Query:-
+SELECT *
+FROM admissions
+WHERE patient_id = 542
+AND admission_date = (
+    SELECT MAX(admission_date)
+    FROM admissions
+    WHERE patient_id = 542
+);
