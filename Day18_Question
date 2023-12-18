@@ -1,0 +1,25 @@
+Query Question:-
+Retrieve the following columns: contact_name, address, and city from the table customers
+The query should only include customers that are NOT from the countries Germany, Mexico, or Spain.
+customers table schema
+customer_id
+company_name
+contact_name
+contact_title
+address
+city
+region
+postal_code
+country
+phone
+fax
+Important Concepts
+SQL SELECT statement: Used to specify the columns that should be returned in the result set.
+SQL WHERE clause: Used for filtering records based on specific conditions.
+SQL NOT IN clause: Used to exclude records that match values in a list.
+Remember, the database contains all the information you need to construct the query. Good luck!
+
+Query:-
+Select contact_name, address, city
+from customers
+where country not in ('Germany', 'Mexico', 'Spain');
