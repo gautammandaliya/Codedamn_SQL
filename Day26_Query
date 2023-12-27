@@ -1,0 +1,35 @@
+Query Question:-
+In this lab, you'll work with the SQLite-based Chinook database to perform various SQL operations. The objective is to test and sharpen your SQL skills.
+
+Dataset Description
+The dataset you'll be working with is the Chinook database, which contains multiple tables like Artist, Album, Track, Invoice, etc., each having specific fields. Make sure to refer to the table schema before starting the challenges.
+
+Task
+Calculate the total sales for each month. Your task is to write an SQL query that sums up the sales for each month from the Invoice table.
+
+Tables Involved: Invoice
+Output Columns: Month, TotalSales
+Specific Instructions
+Use strftime('%Y-%m', "InvoiceDate") to format the date into 'YYYY-MM' format. Alias this as "Month".
+Sum the "Total" column in the Invoice table and alias it as "TotalSales".
+Group your results by "Month".
+Order your results by "Month".
+Challenge
+Objective: Calculate the total sales for each month from the Invoice table.
+
+Tables Involved: Invoice
+Columns in Output: Month, TotalSales
+Specifics:
+
+Use strftime('%Y-%m', "InvoiceDate") to format the date into 'YYYY-MM' format and alias it as Month.
+Sum up the Total column and alias it as TotalSales.
+Group the results by Month.
+Order the results by Month.
+Make sure to use double quotes for column and table names.
+
+Query:-
+SELECT strftime('%Y-%m', "InvoiceDate") AS "Month",
+       SUM("Total") AS "TotalSales"
+FROM "Invoice"
+GROUP BY "Month"
+ORDER BY "Month";
