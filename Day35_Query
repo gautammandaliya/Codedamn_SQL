@@ -1,0 +1,53 @@
+Query Question:-
+Welcome to this SQL lab focused on the SQLite chinook database. Here, you'll be tested on your SQL querying abilities using the chinook dataset.
+
+Database Details
+The chinook database encapsulates details about artists, albums, tracks, and related data. For this lab, here are the primary tables you will be working with:
+
+"Artist"
+"Album"
+"Track"
+"MediaType"
+"Genre"
+"Playlist"
+"PlaylistTrack"
+"Invoice"
+"InvoiceLine"
+"Customer"
+"Employee"
+Challenge
+Your tasks will revolve around retrieving specific data from the chinook database based on the provided challenges. Here's a brief on your primary challenge:
+
+Objective: Identify artists who haven't released any albums.
+
+Description: Your task is to retrieve a list of artist names (Name) from the Artist table who don't have any associated albums in the Album table. Use the table columns and names provided in the challenge. Your output should consist of artist names (Name), ordered by their ArtistId.
+
+Expected Columns in Output:
+
+Name from the Artist table
+Order:
+
+Results should be ordered by ArtistId from the Artist table.
+Hint: Consider leveraging a JOIN operation or a subquery to get the desired result. Remember, some artists might not have a corresponding entry in the Album table.
+
+Important Notes
+Accuracy: Please ensure you use exact names for tables and columns as defined in the chinook database schema. Misnamed tables or columns will lead to incorrect results.
+
+Column Naming: Ensure that the columns in your output match the expected columns as described in the challenges. Remember, even if the data is correct, misnaming a column will result in an incorrect output.
+
+Double Quotes: For clarity, always use double quotes around column and table names in your queries.
+
+Ordering: As mentioned in the challenges, always ensure that your results have an ORDER BY clause. This is crucial to match the expected output, as databases might return rows in different orders if not explicitly ordered.
+
+Query:-
+SELECT
+    "Name"
+FROM
+    "Artist"
+WHERE
+    "ArtistId" NOT IN (
+        SELECT DISTINCT "ArtistId"
+        FROM "Album"
+    )
+ORDER BY
+    "ArtistId";
