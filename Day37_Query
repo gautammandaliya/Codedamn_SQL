@@ -1,0 +1,26 @@
+Query Question:-
+Your task is to retrieve specific details about certain patients from the patients table. The criteria for selecting these patients is that they do not have any records in the admissions table. In other words, these are patients who have never been admitted to the hospital.
+
+Here's the specific question you need to answer:
+
+Retrieve the patient_id, first_name, and last_name from the patients table for those individuals whose patient_id does not exist in any rows of the admissions table.
+
+Concepts to Remember
+Subqueries: At times, you need to perform a query inside another. These inner queries, or subqueries, can return data that will be used in the main query as a condition to further refine the data that is retrieved.
+
+NOT IN clause: This SQL clause is used to filter out rows that are not in a list or subquery result. It can be handy when you want to exclude certain rows based on specific criteria.
+
+Now, armed with this information, go ahead and write the SQL query to fetch the required details. Best of luck!
+
+Query:-
+SELECT
+    patient_id,
+    first_name,
+    last_name
+FROM
+    patients
+WHERE
+    patient_id NOT IN (
+        SELECT DISTINCT patient_id
+        FROM admissions
+    );
