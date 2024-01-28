@@ -1,0 +1,24 @@
+Query Question:-
+The database contains multiple tables, but for this lab, you'll primarily focus on two tables:
+
+patients
+province_names
+Exercise
+Write a SQL query to show the first name, last name, and the full province name of each patient. The objective is to replace any abbreviated province codes with their complete names. For example, the province name should appear as 'Ontario' instead of 'ON'.
+
+Important Concepts
+To complete this lab, you'll need a good grasp of:
+
+Basic SQL SELECT statements for data retrieval
+SQL JOIN operations to combine rows from two or more tables
+Good luck!
+
+Query:-
+SELECT
+    patients.first_name,
+    patients.last_name,
+    province_names.province_name AS province_name
+FROM
+    patients
+JOIN
+    province_names ON patients.province_id = province_names.province_id;
