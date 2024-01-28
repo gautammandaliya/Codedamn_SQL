@@ -1,0 +1,54 @@
+Query Question:-
+This lab aims to test your SQL skills by working with the famous chinook dataset. Your objective is to solve various challenges that will require a combination of SQL operations, ranging from basic selection to complex joins and aggregations.
+
+Database Overview:
+The chinook database you'll be working with consists of various tables representing a digital music store. The tables and some of their important columns include:
+
+"Artist": Contains artists with columns like "ArtistId" and "Name".
+"Album": Stores album information with columns such as "AlbumId", "Title", and "ArtistId".
+"Track": Holds track details with columns like "TrackId", "Name", "AlbumId", and others.
+"InvoiceLine": Represents invoice lines, and contains columns like "InvoiceLineId", "InvoiceId", "TrackId", "UnitPrice", and "Quantity".
+Guidelines:
+SQL Syntax: Ensure you're using SQLite syntax since the database is based on SQLite.
+Naming Conventions: Stick to the exact table and column names as given in the database schema. Remember to use double quotes for table and column names for clarity, e.g., "ArtistId" instead of ArtistId.
+Column Naming: Ensure your output columns match the specified names in the problem statement. The names need to be exact; otherwise, the challenge evaluation might fail.
+Ordering: When working on challenges, always make sure to include an ORDER BY clause if the problem statement mentions a specific ordering. This is crucial as it ensures consistent outputs which can be correctly evaluated.
+Challenges:
+Objective: Identify and list the top 5 artists based on their total sales.
+
+Tables Involved:
+
+Artist
+Album
+Track
+InvoiceLine
+Instructions:
+
+Start by joining the relevant tables to link artists with their sales. The tables to consider are Artist, Album, Track, and InvoiceLine.
+You will need to calculate the total sales for each artist. This involves summing up the product of UnitPrice and Quantity (from InvoiceLine) for tracks associated with each artist.
+Sort your results by TotalSales in descending order.
+Limit the output to the top 5 results.
+Desired Output:
+
+Columns:
+ArtistName: This should represent the name of the artist from the Artist table.
+TotalSales: This represents the total sales attributed to the artist, calculated as mentioned above.
+Note: Ensure your output columns are exactly named as ArtistName and TotalSales.
+
+Query:-
+SELECT
+    A."Name" AS ArtistName,
+    SUM(IL."UnitPrice" * IL."Quantity") AS TotalSales
+FROM
+    Artist A
+JOIN
+    Album AL ON A."ArtistId" = AL."ArtistId"
+JOIN
+    Track T ON AL."AlbumId" = T."AlbumId"
+JOIN
+    InvoiceLine IL ON T."TrackId" = IL."TrackId"
+GROUP BY
+    A."ArtistId", A."Name"
+ORDER BY
+    TotalSales DESC
+LIMIT 5;
