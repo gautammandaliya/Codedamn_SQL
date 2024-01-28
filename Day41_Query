@@ -9,20 +9,7 @@ Window Functions: These are special SQL functions that perform calculations acro
 Your goal is to write an SQL query that accomplishes the given task. Remember, focus on the structure of your query, the use of aggregate functions, and the application of window functions where necessary. Good luck!
 
 Query:-
-WITH DailyAdmissions AS (
-    SELECT
-        admission_date,
-        COUNT(*) AS daily_admissions
-    FROM
-        admissions
-    GROUP BY
-        admission_date
-)
-SELECT
-    admission_date,
-    daily_admissions,
-    LAG(daily_admissions) OVER (ORDER BY admission_date) AS admissions_difference
-FROM
-    DailyAdmissions
-ORDER BY
-    admission_date;
+SELECT admission_date, count(admission_date) AS admission_day,
+count(admission_date) - LAG(count(admission_date)) OVER (ORDER BY admission_date) AS admission_count_change
+FROM admissions
+GROUP BY admission_date;
