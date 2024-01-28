@@ -1,0 +1,64 @@
+Query Question:-
+This lab is designed to test your SQL skills with real-world challenges on the well-known chinook dataset. Your task is to write SQL queries to extract specific data based on the challenges provided.
+
+Lab Instructions
+Database Schema
+To get started, familiarize yourself with the chinook database schema:
+
+Artist
+
+"ArtistId" (Primary Key)
+"Name"
+Album
+
+"AlbumId" (Primary Key)
+"Title"
+"ArtistId" (Foreign Key to Artist)
+... (and so on for all tables)
+
+Challenge
+Objective: Determine the number of albums associated with each artist in the database.
+
+Description: For this challenge, you must write an SQL query to count the number of albums each artist has in the chinook database. The results should clearly indicate the artist's name alongside their album count.
+
+Tables Involved:
+
+Artist
+Album
+Expected Columns in Result:
+
+Name from the Artist table.
+AlbumCount - This is a count of the albums associated with each artist.
+Order of Results: The results should be ordered by ArtistId from the Artist table.
+
+Hints/Tips:
+
+Consider joining the Artist and Album tables to associate albums with artists.
+Aggregate functions will be crucial to count the number of albums for each artist.
+Your final query should look something like this (but with specific columns and conditions filled in):
+SELECT ... FROM ...
+JOIN ... ON ...
+WHERE ...
+GROUP BY ...
+ORDER BY "Artist"."ArtistId";
+Tips
+Always make use of double quotes around table and column names for clarity.
+Review the challenge descriptions carefully to ensure your solution meets the exact requirements.
+Ensure you specify ordering in your SQL queries wherever required, as output mismatch due to ordering can lead to failing the lab.
+Final Notes
+Remember, precision is key. Stick to the exact names for tables and columns as defined in the chinook database schema, and follow the challenge instructions closely. Your SQL solutions will be compared to predefined solutions to determine accuracy, so it's essential that your queries and their results match the given specifications closely.
+
+Best of luck, and happy querying
+
+Query:-
+SELECT
+    Artist.Name,
+    COUNT(Album."AlbumId") AS AlbumCount
+FROM
+    Artist
+LEFT JOIN
+    Album ON Artist.ArtistId = Album.ArtistId
+GROUP BY
+    Artist.ArtistId, Artist.Name
+ORDER BY
+    Artist.ArtistId;
